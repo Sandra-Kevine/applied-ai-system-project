@@ -1,0 +1,16 @@
+flowchart LR
+    U[User] --> I[CLI Input]
+    I --> G[Input Guardrail]
+    D[Local Documents] --> X[Index and Chunk]
+    X --> R[TF-IDF Retriever]
+    G --> R
+    R --> C[Retrieved Context]
+    C --> S[Source-Grounded Synthesizer]
+    S --> V[Confidence and Citation Check]
+    V --> O[Answer and Sources]
+    O --> U
+    V --> L[JSON Interaction Log]
+    H[Human Reviewer] -. samples/reviews .-> L
+    T[Reliability Harness] -. tests .-> G
+    T -. tests .-> R
+    T -. tests .-> V
