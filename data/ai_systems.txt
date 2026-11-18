@@ -1,0 +1,7 @@
+RAG (retrieval-augmented generation) combines retrieved source passages with a language model to ground an answer in relevant material. Retrieval happens before generation, and the answer should cite or reflect the retrieved evidence.
+
+An AI agent can plan actions, use tools, observe results, and verify or revise its work. A plain chatbot mainly produces text in a turn without necessarily acting or checking.
+
+A guardrail validates input or output and stops unsafe or unreliable behavior. Human-in-the-loop review means a person evaluates or approves an important AI result.
+
+Reliability testing measures whether an AI system is consistent, accurate, and robust. Outputs should be checked through verification, which compares an answer against requirements or source evidence.
