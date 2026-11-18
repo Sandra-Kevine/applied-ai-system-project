@@ -42,25 +42,26 @@ Output:
 Answer: RAG (retrieval-augmented generation) combines retrieved source passages with a language model to ground an answer in relevant material.
 
 Sources:
-[1] data/ai_systems.txt (lines 1-2)
+[1] data/ai_systems.txt (passage 1)
 
-Confidence: 0.82
+Confidence: 0.21
 Mode: extractive
 ```
 
 ### 2. Agent question
 Command:
 ```bash
-python -m src.cli ask "How do agents differ from simple chatbots?"
+python -m src.cli ask "How does an AI agent work?"
 ```
 Output:
 ```text
 Answer: An AI agent can plan actions, use tools, observe results, and verify or revise its work. A plain chatbot mainly produces text in a turn without necessarily acting or checking.
 
 Sources:
-[1] data/ai_systems.txt (lines 3-6)
+[1] data/ai_systems.txt (passage 2)
+[2] data/ai_systems.txt (passage 3)
 
-Confidence: 0.78
+Confidence: 0.42
 Mode: extractive
 ```
 
@@ -90,11 +91,10 @@ python -m src.evaluate
 RAG retrieval cases: 4/4 passed
 Empty-input guardrail: PASS
 Low-confidence guardrail: PASS
-Retrieval quality average: 0.83
 Overall: 6/6 checks passed
 ```
 
-These values are representative of a successful default fixture run; the harness prints the actual run results.
+Tested 2026-11-18 with the default `data/ai_systems.txt` fixture and no external model endpoint.
 
 ## Design Decisions
 - Local retrieval keeps the core reproducible and avoids a mandatory hosted service.
@@ -108,3 +108,13 @@ The test suite covers indexing, citation generation, empty input, irrelevant que
 
 ## Reflection
 This project taught me to treat retrieval quality and uncertainty as product features, not afterthoughts. A fluent answer is not valuable if it cannot be tied to evidence. The local fallback made iteration faster and the optional model endpoint preserved portability.
+
+## Presentation Outline (5–7 minutes)
+1. **Problem and original project (30–60 seconds):** Extend the Study Notes Summarizer into source-grounded question answering.
+2. **Live or pasted demo (2–3 minutes):** Run the RAG question, agent question, and unrelated-question guardrail.
+3. **Architecture (60–90 seconds):** Walk through the Mermaid diagram and explain retrieval, synthesis, logging, testing, and human review.
+4. **Reliability and reflection (60–90 seconds):** Show the 6/6 harness result, limitations, and one accepted/rejected AI suggestion.
+5. **Next steps (30 seconds):** Add semantic embeddings and human-reviewed relevance labels.
+
+## Portfolio Artifact
+**What this project says about me as an AI engineer:** I can turn a prior text-processing prototype into a transparent, reproducible RAG system with source citations, confidence thresholds, guardrails, automated evaluation, interaction logging, and responsible-AI documentation. I prioritize evidence and failure behavior instead of presenting fluent output as automatically trustworthy.

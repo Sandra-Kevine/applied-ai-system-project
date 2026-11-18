@@ -23,7 +23,22 @@ def evaluate() -> dict:
 
     total = len(CASES) + 2
     score = passed + bool(empty_ok) + bool(unrelated_ok)
-    return {"passed": score, "total": total, "retrieval_passed": passed, "retrieval_total": len(CASES)}
+    retrieval_results = []
+    for question, category, term in CASES:
+        result = answer(question)
+        retrieval_results.append({
+            "input": question,
+            "result": "PASS" if term in " ".join(s["text"].lower() for s in result["sources"]) else "FAIL",
+            "confidence": result["confidence"],
+        })
+
+    return {
+        "passed": score,
+        "total": total,
+        "retrieval_passed": passed,
+        "retrieval_total": len(CASES),
+        "retrieval_results": retrieval_results,
+    }
 
 
 def main() -> None:
