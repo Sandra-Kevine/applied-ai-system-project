@@ -110,6 +110,8 @@ The test suite covers indexing, citation generation, empty input, irrelevant que
 This project taught me to treat retrieval quality and uncertainty as product features, not afterthoughts. A fluent answer is not valuable if it cannot be tied to evidence. The local fallback made iteration faster and the optional model endpoint preserved portability.
 
 ## Presentation Outline (5–7 minutes)
+A complete 5–7 minute script is available in [presentation.md](presentation.md).
+
 1. **Problem and original project (30–60 seconds):** Extend the Study Notes Summarizer into source-grounded question answering.
 2. **Live or pasted demo (2–3 minutes):** Run the RAG question, agent question, and unrelated-question guardrail.
 3. **Architecture (60–90 seconds):** Walk through the Mermaid diagram and explain retrieval, synthesis, logging, testing, and human review.
